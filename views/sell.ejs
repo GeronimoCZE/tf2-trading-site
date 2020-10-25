@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>Geronimo's Store</title> 
+    <meta charset="UTF-8">
+    <meta name="description" content="#">
+    <meta name="keywords" content="#">
+    <meta name="author" content="GeronimO">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/style.css" rel="stylesheet" type="text/css"> 
+</head>
+<body>
+    <nav class="main-nav">
+        <ul class="main-nav-left">
+            <li><a href="">ss</a></li>
+            <li><a href="">ss</a></li>
+        </ul>
+        <ul class="main-nav-right">
+            <li><a href="#" data-toggle="modal" data-target="#loginModal" onclick="loginClick()">Login</a></li>
+        </ul>
+    </nav>
+    <div class="load" id="load"></div>
+    <div class="header-main">
+        <div class="header-main-content">
+            <img src="/avatar.png" alt="">
+            <h1>GERONIMO'S STORE</h1>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content-cont">
+            <div class="nav">
+                <div class="left">
+                    <a href="">ABOUT</a>
+                    <a href="">ABOUT</a>
+                </div>
+                <div class="mid">
+                    <a href="./">STORE</a>
+                </div>
+                <div class="right">
+                    <a href="">SUPPORT</a>
+                    <a href="">ABOUT</a>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="content-bg">
+                    <div class="actual-content">
+                        <!-- display after -->
+                        <div class="navigation" id="navigation">
+                            <a href="./"><span class="menuSpan">Menu</span></a>
+                            <span>></span>
+                            <span class="sellSpan" id="sellSpan">Sell</span>
+                        </div>
+                        <div class="summary" id="summary">
+                            <div class="summary-sum">
+                                <div class="total">
+                                    <span>Total price: </span>
+                                    <span id="KeyTotal">0</span>
+                                    <span> keys, </span>
+                                    <span id="RefTotal">0</span>
+                                    <span> refs</span>
+                                </div>
+                                <div class="trade-offer">
+                                    <div class="tradeBtn">Trade Offer</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sell-tab" id="sellTab">
+                            <div class="row1"> 
+                                <!-- max 10 items -->
+                                <div class="item"></div> 
+                                <%- addSlot %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>
+        
+    </footer>
+</body>

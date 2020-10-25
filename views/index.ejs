@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>Geronimo's Store</title> 
+    <meta charset="UTF-8">
+    <meta name="description" content="#">
+    <meta name="keywords" content="#">
+    <meta name="author" content="GeronimO">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <nav class="main-nav">
+        <ul class="main-nav-left">
+            <li><a href="">ss</a></li>
+            <li><a href="">ss</a></li>
+        </ul>
+        <ul class="main-nav-right">
+            <li><a href="#" data-toggle="modal" data-target="#loginModal" onclick="loginClick()">Login</a></li>
+        </ul>
+    </nav>
+    <div class="load" id="load"></div>
+    <div class="header-main">
+        <div class="header-main-content">
+            <img src="/avatar.png" alt="">
+            <h1>GERONIMO'S STORE</h1>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content-cont">
+            <div class="nav">
+                <div class="left">
+                    <a href="">ABOUT</a>
+                    <a href="">ABOUT</a>
+                </div>
+                <div class="mid">
+                    <a href="#">STORE</a>
+                </div>
+                <div class="right">
+                    <a href="">SUPPORT</a>
+                    <a href="">ABOUT</a>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="content-bg">
+                    <div class="actual-content">
+                        <div class="choose-tab" id="chooseTab">
+                            <a href="/views/sell"><div class="sell-opt">SELL</div></a>
+                            <a href="/views/buy"><div class="buy-opt">BUY</div></a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>
+        
+    </footer>
+</body>
+<script>
+    function loginClick(){
+        var line = document.getElementById("load");
+        line.style.backgroundPosition = "left";
+        sleep(1500).then(() => { line.style.backgroundPosition = "center"; });
+        sleep(1600).then(() => { line.style.backgroundPosition = "right"; });
+        sleep(3000).then(() => { line.style.backgroundPosition = "center"; });
+    };
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+</script>
+</html>

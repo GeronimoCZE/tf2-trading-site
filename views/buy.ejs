@@ -1,0 +1,347 @@
+<html>
+<head>
+    <title>Geronimo's Store</title> 
+    <meta charset="UTF-8">
+    <meta name="description" content="#">
+    <meta name="keywords" content="#">
+    <meta name="author" content="GeronimO">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/style.css" rel="stylesheet" type="text/css"> 
+</head>
+<body>
+    <nav class="main-nav" xd=true>
+        <ul class="main-nav-left">
+            <li><a href="">ss</a></li>
+            <li><a href="">ss</a></li>
+        </ul>
+        <ul class="main-nav-right">
+            <li><a href="#" data-toggle="modal" data-target="#loginModal" onclick="loginClick()">Login</a></li>
+        </ul>
+    </nav>
+    <div class="load" id="load"></div>
+    <div class="header-main">
+        <div class="header-main-content">
+            <img src="/avatar.png" alt="">
+            <h1>GERONIMO'S STORE</h1>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content-cont">
+            <div class="nav">
+                <div class="left">
+                    <a href="">ABOUT</a>
+                    <a href="">ABOUT</a>
+                </div>
+                <div class="mid">
+                    <a href="./">STORE</a>
+                </div>
+                <div class="right">
+                    <a href="">SUPPORT</a>
+                    <a href="">ABOUT</a>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="content-bg">
+                    <div class="actual-content">
+                        <div class="navigation" id="navigation">
+                            <a href="./"><span class="menuSpan">Menu</span></a>
+                            <span>></span>
+                            <span class="buySpan" id="buySpan">GeronimO [Buying Quicksells]</span>
+                            <span class="itemSpan" id="itemSpan"><%= lengh + item_lengh %></span>
+                            <span class="items">Items availible:</span>
+                            
+                        </div>
+                        <div class="summary" id="summary">
+                            <div class="summary-sum">
+                                <div class="total">
+                                    <span>Total price: </span>
+                                    <span id="KeyTotal" onchange="keyTotalChange()">0</span>
+                                    <span> keys, </span>
+                                    <span id="RefTotal">0</span>
+                                    <span> refs</span>
+                                    <div class="cleanBtn" id="cleanBtn" onmouseover="cleanBtnOver()" onmouseout="cleanBtnOut()" onclick="cleanBtnClick()">clear</div>
+                                </div>
+                                <div class="trade-offer">
+                                    <div class="tradeBtn" id="tradeBtn" onmouseover="btnOver()" onmouseout="btnOut()">Trade Offer</div>
+                                    <div id="message">Select some items first!</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sell-tab" id="sellTab">
+                            <div class="row1"> 
+                                <div class="itemOverlay" id="itemOverlay">
+                                    <div class="color" id="color"></div>
+                                    <div class="contentOverlay">
+                                        <span id="nameSpan"></span>
+                                        <div class="itemD">
+                                            <div class="itemDesc">
+                                                <span id="effectSpan"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- max 10 items -->
+                                <% var i = 0; %>
+                                <% while (i < lengh){ %>
+                                    <%- slots[i] %>
+                                    <% i += 1}; %>
+                                <% var ii = 0; %>
+                                <% while (ii < item_lengh){ %>
+                                    <%- item_slots[ii] %>
+                                    <% ii += 1}; %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>
+        
+    </footer>
+
+    <script type="text/javascript">
+        function assets() {
+            var els = document.getElementsByClassName('item');
+            var itemAmount = document.getElementById('itemSpan').innerHTML;
+            itemAmount = parseInt(itemAmount, 10);
+            console.log(itemAmount);
+            for(var i = 0; i < itemAmount; i++) {
+                console.log(itemAmount);
+                var el = els[i];
+                var color = document.getElementById('color');
+                var nameSpan = document.getElementById("nameSpan");
+                if (el.getAttribute('name').includes("Unusual") == true){
+                    el.style.backgroundColor = " rgb(115, 58, 238)";
+                } else if (el.getAttribute('name').includes("Strange") == true){
+                    el.style.backgroundColor = "orangered";
+                } else if (el.getAttribute('name').includes("(") == true){
+                    el.style.backgroundColor = "white";
+                } else if (el.getAttribute('name').includes("(") == false || el.getAttribute('name').includes("Strange") == false || el.getAttribute('name').includes("Unusual") == false){
+                    el.style.backgroundColor = "yellow";
+                };
+            }
+        };
+        assets();
+        function keyTotalChange(){
+            var KeyTotal = document.getElementById("KeyTotal").innerHTML;
+            var RefTotal = document.getElementById("RefTotal").innerHTML;
+            var cleanBtn = document.getElementById("cleanBtn");
+            var tradeBtn = document.getElementById("tradeBtn");
+            if (KeyTotal == "0" && RefTotal == "0"){
+                cleanBtn.style.display = "none";
+            } else {
+                cleanBtn.style.display = "inline-block";
+            }
+        };
+        function cleanBtnOver(){
+            var cleanBtn = document.getElementById("cleanBtn");
+            cleanBtn.style.opacity = ".9";
+        }
+
+        function cleanBtnOut(){
+            var cleanBtn = document.getElementById("cleanBtn");
+            cleanBtn.style.opacity = "1";
+        }
+
+        function cleanBtnClick(){
+            var els = document.getElementsByClassName('item');
+            var itemAmount = document.getElementById('itemSpan').innerHTML;
+            var KeyTotal = document.getElementById("KeyTotal");
+            var RefTotal = document.getElementById("RefTotal");
+            var tradeBtn = document.getElementById("tradeBtn");
+            tradeBtn.style.opacity = ".6";
+            KeyTotal.innerHTML = "0";
+            RefTotal.innerHTML = "0";
+            itemAmount = parseInt(itemAmount, 10);
+            var cleanBtn = document.getElementById("cleanBtn");
+            cleanBtn.style.display = "none";
+            for(var i = 0; i < itemAmount; i++) {
+                var el = els[i];
+                el.setAttribute("select", "null");
+                console.log(el.getAttribute('id'));
+                if (el.getAttribute('name').includes("Unusual") == true){
+                    el.style.backgroundColor = " rgb(115, 58, 238)";
+                    el.style.opacity = ".93";
+                } else if (el.getAttribute('name').includes("Strange") == true){
+                    el.style.backgroundColor = "orangered";
+                } else if (el.getAttribute('name').includes("(") == true){
+                    el.style.backgroundColor = "white";
+                    el.style.opacity = ".93";
+                } else if (el.getAttribute('name').includes("(") == false || el.getAttribute('name').includes("Strange") == false || el.getAttribute('name').includes("Unusual") == false){
+                    el.style.backgroundColor = "yellow";
+                    el.style.opacity = ".93";
+            };
+            }
+        }
+
+        var sellTab = document.getElementById("sellTab");
+        var x;
+        var y;
+        var partX;
+        var partY;
+        sellTab.addEventListener('mousemove',function(e) {
+            var csellTab = sellTab.getBoundingClientRect();
+            x = e.clientX - csellTab.left;
+            y = e.clientY - csellTab.top;
+            partX = csellTab.right / 10;
+            partY = csellTab.bottom / 4.5;
+            console.log(e.clientX, e.clientY)
+        });
+
+        function itemHover(id){
+            var itemSelect = document.getElementById(id).getAttribute('select');
+            var element = document.getElementById(id);
+            var rect = element.getBoundingClientRect();
+            var item = document.getElementById(id).getAttribute('name');
+            var effectSpan = document.getElementById("effectSpan");
+            var effect = document.getElementById(id).getAttribute('effect');
+            var overlay = document.getElementById("itemOverlay");
+            var nameSpan = document.getElementById("nameSpan");
+            var color = document.getElementById('color');
+            /*element.style.width = "8%";*/
+            element.style.height = "97%";
+            element.style.width = "8.93%";
+            element.style.marginLeft = ".4%";
+            element.style.marginRight = ".4%";
+            element.style.outlineStyle = "solid";
+            if(y > partY * 1.5){
+                overlay.style.top = y - 200;
+            } else {
+                overlay.style.top = y + 200;
+            }
+            if (x > partX * 3){
+                overlay.style.left = x - 300;
+            } else {
+                overlay.style.left = x;
+            }
+            itemName = item.replace("/", "'");
+            if (itemSelect == "null"){
+                element.style.opacity = "1";
+            } else {
+                element.style.opacity = ".65";
+            }
+            if (element.getAttribute('name').includes("Unusual") == true){
+                nameSpan.style.color = "rgb(115, 58, 238)"
+                color.style.backgroundColor = "rgb(115, 58, 238)"
+            } else if (element.getAttribute('name').includes("Strange") == true){
+                nameSpan.style.color = "orangered"
+                color.style.backgroundColor = "orangered"
+            } else if (element.getAttribute('name').includes("(") == true){
+                nameSpan.style.color = "white"
+                color.style.backgroundColor = "white"
+            } else {
+                nameSpan.style.color = "yellow"
+                color.style.backgroundColor = "yellow"
+            };
+            nameSpan.innerHTML = itemName;
+            effectSpan.innerHTML = effect;
+            overlay.style.display = "block";
+            sleep(1).then(() => { overlay.style.height = "300px"; });
+        };
+
+        function itemHoverOut(id){
+            var itemSelect = document.getElementById(id).getAttribute('select');
+            var element = document.getElementById(id);
+            var overlay = document.getElementById("itemOverlay");
+            element.style.height = "100%";
+            element.style.width = "9.7%";
+            element.style.marginLeft = "0";
+            element.style.marginRight = "0";
+            element.style.outlineStyle = "none";
+            if (itemSelect == "null"){
+                element.style.opacity = ".93";
+            } else {
+                element.style.opacity = ".6";
+            }
+            overlay.style.display = "none";
+            overlay.style.height = "0px"; 
+
+        };
+
+        function btnOver(){
+            var KeyTotal = document.getElementById("KeyTotal").innerHTML;
+            var message = document.getElementById("message");
+            var tradeBtn = document.getElementById("tradeBtn");
+            KeyTotal = parseInt(KeyTotal, 10)
+            if(KeyTotal > 0 == true){
+                message.style.display = "none";
+                tradeBtn.style.opacity = ".9"
+            } else {
+                message.style.display = "block";
+            };
+        }
+        function btnOut(){
+            var KeyTotal = document.getElementById("KeyTotal").innerHTML;
+            var message = document.getElementById("message");
+            KeyTotal = parseInt(KeyTotal, 10)
+            message.style.display = "none";
+            if(KeyTotal > 0 == true){
+                tradeBtn.style.opacity = "1"
+            } else {
+                tradeBtn.style.opacity = ".6"
+            };
+        }
+        function getValue(id){
+            var cleanBtn = document.getElementById("cleanBtn");
+            var item = document.getElementById(id);
+            var KeyTotal = document.getElementById("KeyTotal").innerHTML;
+            var itemName = document.getElementById(id).getAttribute('name');
+            var Key = document.getElementById("KeyTotal");
+            var itemSelect = document.getElementById(id).getAttribute('select');
+            var itemValue = document.getElementById(id).getAttribute('value');
+            var overlay = document.getElementById("itemOverlay");
+            cleanBtn.style.display = "inline-block";
+            KeyTotal = parseInt(KeyTotal, 10)
+            itemValue = parseInt(itemValue, 10)
+            if(itemSelect.includes("null") == true){
+                document.getElementById(id).setAttribute("select", "true");
+                KeyTotal = itemValue + KeyTotal;
+                Key.innerHTML = KeyTotal;
+                nameSpan.innerHTML = itemName;
+                item.style.opacity = ".6";
+                select = true;
+                item.style.backgroundColor = "grey";
+                item.style.height = "97%";
+                item.style.width = "8.93%";
+                item.style.marginLeft = ".4%";
+                item.style.marginRight = ".4%";
+            } else if (itemSelect.includes("true") == true) {
+                document.getElementById(id).setAttribute("select", "null");
+                KeyTotal = KeyTotal - itemValue;
+                Key.innerHTML = KeyTotal;
+                nameSpan.innerHTML = itemName;
+                select = false;
+                item.style.opacity = ".93";
+                item.style.height = "100%";
+                item.style.width = "9.7%";
+                item.style.marginLeft = "0";
+                item.style.marginRight = "0";
+                if (itemName.includes("Unusual") == true){
+                    item.style.backgroundColor = " rgb(115, 58, 238)";
+                } else if (itemName.includes("Strange") == true){
+                    item.style.backgroundColor = "orangered";
+                } else if (itemName.includes("(") == true){
+                    item.style.backgroundColor = "white";
+                } else {
+                    item.style.backgroundColor = "yellow";
+                }
+            }
+            var KeyTotal = document.getElementById("KeyTotal").innerHTML;
+            KeyTotal = parseInt(KeyTotal, 10)
+            var tradeBtn = document.getElementById("tradeBtn");
+            if(KeyTotal > 0 == true){
+                tradeBtn.style.opacity = "1";
+                cleanBtn.style.display = "inline-block";
+            } else {
+                tradeBtn.style.opacity = "0.6";
+                cleanBtn.style.display = "none";
+            };
+        };
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    </script>
+</body>
