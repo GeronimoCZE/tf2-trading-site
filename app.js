@@ -71,8 +71,6 @@ const url_prefix = "https://community.cloudflare.steamstatic.com/economy/image/"
 
 /*
 const logOnOptions = {
-  accountName: 'rinyriny',
-  password: 'pepegaga',
 };
 
 client.logOn(logOnOptions);
