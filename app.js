@@ -69,41 +69,7 @@ const client = new SteamUser();
 const id = "76561198124728984";
 const url_prefix = "https://community.cloudflare.steamstatic.com/economy/image/";
 
-/*
-const logOnOptions = {
-};
 
-client.logOn(logOnOptions);
-
-client.on('loggedOn', () => {
-  console.log('Logged into Steam');
-
-  client.setPersona(SteamUser.EPersonaState.Online, "Geronimo's Store");
-  client.gamesPlayed(440);
-});
-
-steaminventory.getinventory(440, id, 2).then(data => {
-  console.log(data.marketnames.length);
-  for(var i = 0; i < data.marketnames.length; i++) {
-    if (data.marketnames[i].includes("Unusual")) {
-        if(data.marketnames[i].includes("(")){
-          console.log(data.marketnames[i]) /* marketname*/
-          /*
-          console.log(data.items[i].descriptions[1].value) /* Unusual effect for weapons*/
-          /*
-          console.log(url_prefix + data.items[i].icon_url) /* Icon URL */
-          /*
-        } else{
-          console.log(data.marketnames[i]) /* marketname*/ /*
-          console.log(data.items[i].descriptions[0].value) /* Unusual effect */
-          /*
-          console.log(url_prefix + data.items[i].icon_url) /* Icon URL */
-          /*
-        };
-    }
-  } 
-}).catch(err => console.log(err));
-*/
 var unusuals = [];
     urls = [];
     other_urls = [];
@@ -176,11 +142,7 @@ community.getUserInventory(id, 440, 2, true, (err, inventory) => {
           other_urls.push(url);
           var asset = [];
           if (name.includes("Killstreak")){
-            /*
-            for (var y = 0; y < 10; y++) {
-              asset.push(inventory[i].descriptions[y].value);
-            }
-            KsAssets.push(asset); */
+            
           }
         }
     }
